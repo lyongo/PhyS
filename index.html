@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PhyS: Distilling Physical Priors into Streaming World Models">
+    <title>PhyS: Distilling Physical Priors into Streaming World Models</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Page sections">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+      </nav>
+
+      <section class="hero-inner">
+        <p class="eyebrow">Physical streaming world models</p>
+        <h1>PhyS: Distilling Physical Priors into Streaming World Models</h1>
+        <p class="subtitle">
+          A three-stage framework that learns real-world physical priors, transfers them into few-step causal video generators, and aligns long-horizon rollouts with temporally routed physical feedback.
+        </p>
+
+        <div class="authors" aria-label="Authors and affiliations">
+          <p>
+            Liangliang Zhao<sup>1,2</sup>, Junying Wang<sup>1,2</sup>, Danni Yang<sup>1,2</sup>,
+            Yifan Chang<sup>3,4</sup>, Bin Fu<sup>2</sup>, Yu Qiao<sup>2</sup>,
+            Bowen Zhou<sup>2</sup>, Yihao Liu<sup>2,&#9993;</sup>
+          </p>
+          <p class="affiliations">
+            <sup>1</sup>Fudan University &nbsp;&nbsp; <sup>2</sup>Shanghai AI Laboratory<br>
+            <sup>3</sup>University of Science and Technology of China &nbsp;&nbsp; <sup>4</sup>Shanghai Innovation Institute<br>
+            <span>&#9993; Corresponding author: liuyihao@pjlab.org.cn</span>
+          </p>
+        </div>
+
+        <div class="actions" aria-label="Project links">
+          <a class="button primary" href="assets/files/paper.pdf">Paper PDF</a>
+          <a class="button" href="assets/files/arxiv_source.zip">arXiv Source</a>
+          <a class="button" href="https://openreview.net/forum?id=VN7YpXto41">OpenReview</a>
+          <a class="button disabled" aria-disabled="true">Code coming soon</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="overview" class="section narrow">
+        <h2>Overview</h2>
+        <div class="lead-grid">
+          <article>
+            <h3>Why physical priors?</h3>
+            <p>
+              Streaming world models generate future video blocks autoregressively, but physically implausible contacts, deformations, fluids, and phase changes can accumulate over long rollouts.
+            </p>
+          </article>
+          <article>
+            <h3>What PhyS adds</h3>
+            <p>
+              PhyS injects physical knowledge with a 120K real-world physical-interaction dataset, distills it into lightweight causal generators, and uses Temporal Credit Routing for localized physical feedback.
+            </p>
+          </article>
+          <article>
+            <h3>What improves</h3>
+            <p>
+              PhyS improves bidirectional and causal video generators across PhysicsIQ, VideoPhy, VideoPhy2, PhyGenBench, and long-horizon rollout metrics.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="figure-section">
+        <figure>
+          <img src="assets/figures/benchmark_improvements.png" alt="Representative benchmark improvements of PhyS">
+          <figcaption>Representative gains on physics-aware video generation benchmarks.</figcaption>
+        </figure>
+      </section>
+
+      <section id="abstract" class="section narrow">
+        <h2>Abstract</h2>
+        <p>
+          Streaming world models predict future visual states through online rollouts while maintaining physically coherent dynamics over long horizons. However, their rollouts often violate basic physical constraints. PhyS is a three-stage framework for distilling physical priors into streaming world models. It constructs PhyS-120K, a dataset of 120K real-world physical-interaction videos with structured descriptions of object properties and causal state transitions; fine-tunes a bidirectional 14B DiT teacher; distills it into a lightweight 1.3B causal DiT; and aligns the causal generator with online reinforcement learning.
+        </p>
+        <p>
+          The core optimization component, Temporal Credit Routing, evaluates physical consistency over overlapping temporal windows and routes group-relative advantages to temporally aligned denoising actions. On PhysicsIQ, PhyS improves the Wan2.1-14B teacher by 18.2% and improves Self Forcing, Rolling Forcing, and Causal Forcing by 23.7%, 14.8%, and 31.4%, respectively.
+        </p>
+      </section>
+
+      <section id="dataset" class="section">
+        <div class="split">
+          <div>
+            <p class="eyebrow">PhyS-120K</p>
+            <h2>Real-world physical interactions at scale</h2>
+            <p>
+              PhyS-120K contains 120,804 videos spanning fluid dynamics, soft-body deformation, phase transitions, and rigid-body mechanics. Each clip is annotated with physical properties, state changes, and causal event sequences.
+            </p>
+          </div>
+          <figure>
+            <img src="assets/figures/dataset_overview.png" alt="PhyS-120K construction pipeline and dataset statistics">
+          </figure>
+        </div>
+        <figure class="wide-figure">
+          <img src="assets/figures/dataset_gallery.png" alt="Representative scenarios from PhyS-120K">
+          <figcaption>Representative physical-process scenarios from PhyS-120K.</figcaption>
+        </figure>
+      </section>
+
+      <section id="method" class="section">
+        <p class="eyebrow">Method</p>
+        <h2>From physical priors to streaming policies</h2>
+        <div class="method-grid">
+          <article>
+            <span>01</span>
+            <h3>Physics-aware SFT</h3>
+            <p>Fine-tune a bidirectional Wan2.1-14B teacher on structured physical-interaction videos.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Causal distillation</h3>
+            <p>Transfer physical priors into few-step 1.3B causal DiT students for autoregressive streaming rollout.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Temporal Credit Routing</h3>
+            <p>Route overlapping-window physical rewards to temporally aligned denoising actions.</p>
+          </article>
+        </div>
+        <figure class="wide-figure">
+          <img src="assets/figures/method_overview.png" alt="Overview of the PhyS framework">
+          <figcaption>The three-stage PhyS framework and TCR reward routing.</figcaption>
+        </figure>
+      </section>
+
+      <section id="results" class="section">
+        <p class="eyebrow">Results</p>
+        <h2>More plausible long-horizon physical rollouts</h2>
+        <div class="stats">
+          <div><strong>18.2%</strong><span>PhysicsIQ gain for the 14B teacher</span></div>
+          <div><strong>23.7%</strong><span>Self Forcing PhysicsIQ gain</span></div>
+          <div><strong>14.8%</strong><span>Rolling Forcing PhysicsIQ gain</span></div>
+          <div><strong>31.4%</strong><span>Causal Forcing PhysicsIQ gain</span></div>
+        </div>
+        <figure class="wide-figure">
+          <img src="assets/figures/long_horizon_comparison.png" alt="Long-horizon qualitative comparisons">
+          <figcaption>Long-horizon rollout comparisons across physical processes.</figcaption>
+        </figure>
+        <figure class="wide-figure">
+          <img src="assets/figures/reward_comparison.png" alt="Reward model and TCR ablation results">
+          <figcaption>Reward-model agreement and the effect of Temporal Credit Routing.</figcaption>
+        </figure>
+      </section>
+
+      <section id="bibtex" class="section narrow">
+        <h2>BibTeX</h2>
+        <pre><code>@misc{zhao2027phys,
+  title        = {Distilling Physical Priors into Streaming World Models},
+  author       = {Liangliang Zhao and Junying Wang and Danni Yang and Yifan Chang and Bin Fu and Yu Qiao and Bowen Zhou and Yihao Liu},
+  year         = {2027},
+  note         = {Preprint}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>PhyS project page. Built for GitHub Pages.</p>
+    </footer>
+  </body>
+</html>
