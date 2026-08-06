@@ -3,167 +3,123 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhyS: Distilling Physical Priors into Streaming World Models">
-    <title>PhyS: Distilling Physical Priors into Streaming World Models</title>
+    <meta name="description" content="PhyS distills physical priors into streaming world models. Explore visual results and the PhyS-120K dataset.">
+    <meta name="theme-color" content="#f4f2ed">
+    <title>PhyS | Distilling Physical Priors into Streaming World Models</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header class="hero">
-      <nav class="topbar" aria-label="Page sections">
-        <a href="#overview">Overview</a>
-        <a href="#method">Method</a>
-        <a href="#results">Results</a>
-        <a href="#bibtex">BibTeX</a>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="PhyS home">PhyS</a>
+      <nav aria-label="Primary navigation">
+        <a href="#results">Visual results</a>
+        <a href="#dataset">Dataset</a>
       </nav>
+      <a class="header-link" href="assets/files/paper.pdf">Paper <span aria-hidden="true">&#8599;</span></a>
+    </header>
 
-      <section class="hero-inner">
-        <p class="eyebrow">Physical streaming world models</p>
-        <h1>PhyS: Distilling Physical Priors into Streaming World Models</h1>
-        <p class="subtitle">
-          A three-stage framework that learns real-world physical priors, transfers them into few-step causal video generators, and aligns long-horizon rollouts with temporally routed physical feedback.
-        </p>
+    <main id="top">
+      <section class="hero" aria-labelledby="paper-title">
+        <p class="kicker">Streaming world models with physical priors</p>
+        <h1 id="paper-title"><span>PhyS:</span> Distilling Physical Priors into Streaming World Models</h1>
+        <p class="dek">Physically coherent video generation across rigid bodies, soft bodies, fluids, and phase transitions.</p>
 
-        <div class="authors" aria-label="Authors and affiliations">
+        <div class="authors" aria-label="Authors">
           <p>
-            Liangliang Zhao<sup>1,2</sup>, Junying Wang<sup>1,2</sup>, Danni Yang<sup>1,2</sup>,
-            Yifan Chang<sup>3,4</sup>, Bin Fu<sup>2</sup>, Yu Qiao<sup>2</sup>,
-            Bowen Zhou<sup>2</sup>, Yihao Liu<sup>2,&#9993;</sup>
+            Liangliang Zhao<sup>1,2</sup> · Junying Wang<sup>1,2</sup> · Danni Yang<sup>1,2</sup> ·
+            Yifan Chang<sup>3,4</sup> · Bin Fu<sup>2</sup> · Yu Qiao<sup>2</sup> ·
+            Bowen Zhou<sup>2</sup> · Yihao Liu<sup>2,&#9993;</sup>
           </p>
           <p class="affiliations">
-            <sup>1</sup>Fudan University &nbsp;&nbsp; <sup>2</sup>Shanghai AI Laboratory<br>
-            <sup>3</sup>University of Science and Technology of China &nbsp;&nbsp; <sup>4</sup>Shanghai Innovation Institute<br>
-            <span>&#9993; Corresponding author: liuyihao@pjlab.org.cn</span>
+            <sup>1</sup>Fudan University &nbsp; <sup>2</sup>Shanghai AI Laboratory &nbsp;
+            <sup>3</sup>University of Science and Technology of China &nbsp; <sup>4</sup>Shanghai Innovation Institute
           </p>
         </div>
 
         <div class="actions" aria-label="Project links">
-          <a class="button primary" href="assets/files/paper.pdf">Paper PDF</a>
-          <a class="button" href="assets/files/arxiv_source.zip">arXiv Source</a>
-          <a class="button" href="https://openreview.net/forum?id=VN7YpXto41">OpenReview</a>
-          <a class="button disabled" aria-disabled="true">Code coming soon</a>
+          <a class="action action-primary" href="assets/files/paper.pdf">Paper PDF <span aria-hidden="true">&#8599;</span></a>
+          <a class="action" href="https://openreview.net/forum?id=VN7YpXto41">OpenReview <span aria-hidden="true">&#8599;</span></a>
+          <a class="action" href="assets/files/arxiv_source.zip">arXiv source <span aria-hidden="true">&#8595;</span></a>
         </div>
-      </section>
-    </header>
 
-    <main>
-      <section id="overview" class="section narrow">
-        <h2>Overview</h2>
-        <div class="lead-grid">
-          <article>
-            <h3>Why physical priors?</h3>
-            <p>
-              Streaming world models generate future video blocks autoregressively, but physically implausible contacts, deformations, fluids, and phase changes can accumulate over long rollouts.
-            </p>
-          </article>
-          <article>
-            <h3>What PhyS adds</h3>
-            <p>
-              PhyS injects physical knowledge with a 120K real-world physical-interaction dataset, distills it into lightweight causal generators, and uses Temporal Credit Routing for localized physical feedback.
-            </p>
-          </article>
-          <article>
-            <h3>What improves</h3>
-            <p>
-              PhyS improves bidirectional and causal video generators across PhysicsIQ, VideoPhy, VideoPhy2, PhyGenBench, and long-horizon rollout metrics.
-            </p>
-          </article>
-        </div>
+        <a class="scroll-cue" href="#results">
+          Explore the visuals
+          <span aria-hidden="true">&#8595;</span>
+        </a>
       </section>
 
-      <section class="figure-section">
-        <figure>
-          <img src="assets/figures/benchmark_improvements.png" alt="Representative benchmark improvements of PhyS">
-          <figcaption>Representative gains on physics-aware video generation benchmarks.</figcaption>
+      <section id="results" class="showcase showcase-dark" aria-labelledby="results-title">
+        <div class="section-heading">
+          <p class="section-index">01 / Visual results</p>
+          <h2 id="results-title">Physics that holds together over time.</h2>
+          <p>PhyS preserves interactions, deformation, and state changes through long autoregressive rollouts.</p>
+        </div>
+
+        <figure class="visual visual-hero">
+          <a href="assets/figures/long_horizon_comparison.png" aria-label="Open long-horizon comparison at full size">
+            <img src="assets/figures/long_horizon_comparison.png" alt="Long-horizon comparisons showing PhyS preserving collisions, deformation, cloth motion, and phase transitions" loading="eager">
+          </a>
+          <figcaption><span>Long-horizon rollouts</span> Five moments across ten seconds of generated physical evolution.</figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/figures/stage1_comparison.png" aria-label="Open physical-prior comparison at full size">
+            <img src="assets/figures/stage1_comparison.png" alt="Visual comparison of PhyS against WISA and VideoREPA across rigid, soft, fluid, and phase-transition processes" loading="lazy">
+          </a>
+          <figcaption><span>Physical priors</span> Rigid-body collision, soft-body compression, fluid behavior, and melting.</figcaption>
+        </figure>
+
+        <figure class="visual visual-metrics">
+          <a href="assets/figures/benchmark_improvements.png" aria-label="Open benchmark summary at full size">
+            <img src="assets/figures/benchmark_improvements.png" alt="Benchmark improvements on PhysicsIQ, VideoPhy, and VideoPhy2" loading="lazy">
+          </a>
+          <figcaption><span>Measured gains</span> Consistent improvements across physical video benchmarks and streaming backbones.</figcaption>
         </figure>
       </section>
 
-      <section id="abstract" class="section narrow">
-        <h2>Abstract</h2>
-        <p>
-          Streaming world models predict future visual states through online rollouts while maintaining physically coherent dynamics over long horizons. However, their rollouts often violate basic physical constraints. PhyS is a three-stage framework for distilling physical priors into streaming world models. It constructs PhyS-120K, a dataset of 120K real-world physical-interaction videos with structured descriptions of object properties and causal state transitions; fine-tunes a bidirectional 14B DiT teacher; distills it into a lightweight 1.3B causal DiT; and aligns the causal generator with online reinforcement learning.
-        </p>
-        <p>
-          The core optimization component, Temporal Credit Routing, evaluates physical consistency over overlapping temporal windows and routes group-relative advantages to temporally aligned denoising actions. On PhysicsIQ, PhyS improves the Wan2.1-14B teacher by 18.2% and improves Self Forcing, Rolling Forcing, and Causal Forcing by 23.7%, 14.8%, and 31.4%, respectively.
-        </p>
-      </section>
-
-      <section id="dataset" class="section">
-        <div class="split">
-          <div>
-            <p class="eyebrow">PhyS-120K</p>
-            <h2>Real-world physical interactions at scale</h2>
-            <p>
-              PhyS-120K contains 120,804 videos spanning fluid dynamics, soft-body deformation, phase transitions, and rigid-body mechanics. Each clip is annotated with physical properties, state changes, and causal event sequences.
-            </p>
-          </div>
-          <figure>
-            <img src="assets/figures/dataset_overview.png" alt="PhyS-120K construction pipeline and dataset statistics">
-          </figure>
+      <section id="dataset" class="showcase showcase-light" aria-labelledby="dataset-title">
+        <div class="section-heading">
+          <p class="section-index">02 / PhyS-120K dataset</p>
+          <h2 id="dataset-title">120,804 real-world physical interactions.</h2>
+          <p>Four families of observable physical processes, paired with structured object properties and causal event sequences.</p>
         </div>
-        <figure class="wide-figure">
-          <img src="assets/figures/dataset_gallery.png" alt="Representative scenarios from PhyS-120K">
-          <figcaption>Representative physical-process scenarios from PhyS-120K.</figcaption>
-        </figure>
-      </section>
 
-      <section id="method" class="section">
-        <p class="eyebrow">Method</p>
-        <h2>From physical priors to streaming policies</h2>
-        <div class="method-grid">
-          <article>
-            <span>01</span>
-            <h3>Physics-aware SFT</h3>
-            <p>Fine-tune a bidirectional Wan2.1-14B teacher on structured physical-interaction videos.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Causal distillation</h3>
-            <p>Transfer physical priors into few-step 1.3B causal DiT students for autoregressive streaming rollout.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Temporal Credit Routing</h3>
-            <p>Route overlapping-window physical rewards to temporally aligned denoising actions.</p>
-          </article>
+        <figure class="visual visual-hero">
+          <a href="assets/figures/dataset_gallery.png" aria-label="Open dataset gallery at full size">
+            <img src="assets/figures/dataset_gallery.png" alt="Examples from PhyS-120K covering fluid dynamics, soft-body deformation, phase transitions, and rigid-body mechanics" loading="lazy">
+          </a>
+          <figcaption><span>Four physical families</span> Fluid dynamics · Soft-body deformation · Phase transitions · Rigid-body mechanics.</figcaption>
+        </figure>
+
+        <div class="dataset-facts" aria-label="Dataset summary">
+          <div><strong>120,804</strong><span>videos</span></div>
+          <div><strong>4</strong><span>physical families</span></div>
+          <div><strong>Structured</strong><span>properties + causal events</span></div>
         </div>
-        <figure class="wide-figure">
-          <img src="assets/figures/method_overview.png" alt="Overview of the PhyS framework">
-          <figcaption>The three-stage PhyS framework and TCR reward routing.</figcaption>
+
+        <figure class="visual">
+          <a href="assets/figures/dataset_overview.png" aria-label="Open dataset construction overview at full size">
+            <img src="assets/figures/dataset_overview.png" alt="PhyS-120K filtering, category distribution, video duration, and physics-aware annotation pipeline" loading="lazy">
+          </a>
+          <figcaption><span>Dataset construction</span> Filtering, balancing, scenario coverage, and physics-aware video annotation.</figcaption>
         </figure>
       </section>
 
-      <section id="results" class="section">
-        <p class="eyebrow">Results</p>
-        <h2>More plausible long-horizon physical rollouts</h2>
-        <div class="stats">
-          <div><strong>18.2%</strong><span>PhysicsIQ gain for the 14B teacher</span></div>
-          <div><strong>23.7%</strong><span>Self Forcing PhysicsIQ gain</span></div>
-          <div><strong>14.8%</strong><span>Rolling Forcing PhysicsIQ gain</span></div>
-          <div><strong>31.4%</strong><span>Causal Forcing PhysicsIQ gain</span></div>
+      <section class="closing" aria-label="Paper links">
+        <p>Distilling Physical Priors into Streaming World Models</p>
+        <div>
+          <a href="assets/files/paper.pdf">Read the paper <span aria-hidden="true">&#8599;</span></a>
+          <a href="https://openreview.net/forum?id=VN7YpXto41">OpenReview <span aria-hidden="true">&#8599;</span></a>
         </div>
-        <figure class="wide-figure">
-          <img src="assets/figures/long_horizon_comparison.png" alt="Long-horizon qualitative comparisons">
-          <figcaption>Long-horizon rollout comparisons across physical processes.</figcaption>
-        </figure>
-        <figure class="wide-figure">
-          <img src="assets/figures/reward_comparison.png" alt="Reward model and TCR ablation results">
-          <figcaption>Reward-model agreement and the effect of Temporal Credit Routing.</figcaption>
-        </figure>
-      </section>
-
-      <section id="bibtex" class="section narrow">
-        <h2>BibTeX</h2>
-        <pre><code>@misc{zhao2027phys,
-  title        = {Distilling Physical Priors into Streaming World Models},
-  author       = {Liangliang Zhao and Junying Wang and Danni Yang and Yifan Chang and Bin Fu and Yu Qiao and Bowen Zhou and Yihao Liu},
-  year         = {2027},
-  note         = {Preprint}
-}</code></pre>
       </section>
     </main>
 
     <footer>
-      <p>PhyS project page. Built for GitHub Pages.</p>
+      <p>PhyS · Fudan University · Shanghai AI Laboratory</p>
+      <a href="#top" aria-label="Back to top">Back to top &#8593;</a>
     </footer>
   </body>
 </html>
