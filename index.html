@@ -15,6 +15,7 @@
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="PhyS home">PhyS</a>
       <nav aria-label="Primary navigation">
+        <a href="#comparisons">Video comparisons</a>
         <a href="#results">Visual results</a>
         <a href="#dataset">Dataset</a>
       </nav>
@@ -51,9 +52,46 @@
         </a>
       </section>
 
+      <section id="comparisons" class="video-lab" aria-labelledby="comparisons-title">
+        <div class="video-lab__heading">
+          <p class="section-index">01 / Interactive comparisons</p>
+          <div>
+            <h2 id="comparisons-title">Watch the physics unfold.</h2>
+            <p>Matched ten-second generations reveal whether a streaming model preserves the full physical sequence—not just a convincing first frame.</p>
+          </div>
+          <div class="video-key" aria-label="Comparison legend">
+            <span><i class="video-key__baseline"></i>Forcing baseline</span>
+            <span><i class="video-key__phys"></i>+PhyS</span>
+          </div>
+        </div>
+
+        <div class="method-switcher" role="tablist" aria-label="Streaming method">
+          <button class="method-tab is-active" type="button" role="tab" aria-selected="true" data-family="self">
+            <span>01</span> Self-Forcing
+          </button>
+          <button class="method-tab" type="button" role="tab" aria-selected="false" data-family="rolling">
+            <span>02</span> Rolling-Forcing
+          </button>
+          <button class="method-tab" type="button" role="tab" aria-selected="false" data-family="causal">
+            <span>03</span> Causal-Forcing
+          </button>
+        </div>
+
+        <div class="comparison-toolbar">
+          <p id="methodNote">Self-Forcing generates each block from its own previous predictions.</p>
+          <button id="playVisible" class="play-visible" type="button" aria-pressed="false">
+            <span class="play-visible__icon" aria-hidden="true">▶</span>
+            Play visible pairs
+          </button>
+        </div>
+
+        <div id="comparisonGrid" class="comparison-grid" aria-live="polite"></div>
+        <noscript><p class="noscript-note">Enable JavaScript to browse the synchronized video comparisons.</p></noscript>
+      </section>
+
       <section id="results" class="showcase showcase-dark" aria-labelledby="results-title">
         <div class="section-heading">
-          <p class="section-index">01 / Visual results</p>
+          <p class="section-index">02 / Visual results</p>
           <h2 id="results-title">Physics that holds together over time.</h2>
           <p>PhyS preserves interactions, deformation, and state changes through long autoregressive rollouts.</p>
         </div>
@@ -82,7 +120,7 @@
 
       <section id="dataset" class="showcase showcase-light" aria-labelledby="dataset-title">
         <div class="section-heading">
-          <p class="section-index">02 / PhyS-120K dataset</p>
+          <p class="section-index">03 / PhyS-120K dataset</p>
           <h2 id="dataset-title">120,804 real-world physical interactions.</h2>
           <p>Four families of observable physical processes, paired with structured object properties and causal event sequences.</p>
         </div>
@@ -121,5 +159,6 @@
       <p>PhyS · Fudan University · Shanghai AI Laboratory</p>
       <a href="#top" aria-label="Back to top">Back to top &#8593;</a>
     </footer>
+    <script src="comparison.js" defer></script>
   </body>
 </html>
