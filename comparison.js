@@ -143,8 +143,33 @@ const grid = document.querySelector("#comparisonGrid");
 const methodNote = document.querySelector("#methodNote");
 const playVisible = document.querySelector("#playVisible");
 const tabs = [...document.querySelectorAll(".method-tab")];
+const heroReel = document.querySelector("#heroReel");
 let currentFamily = "self";
 let observer;
+
+function renderHeroReel() {
+  const samples = Object.entries(comparisons).flatMap(([family, familyData]) =>
+    familyData.cases.map((item) => ({ family, label: familyData.label, item })),
+  );
+  const tile = ({ family, label, item }, duplicate = false) => `
+    <button class="hero-reel__tile" type="button" data-family="${family}"
+      ${duplicate ? 'aria-hidden="true" tabindex="-1"' : `aria-label="Open ${item.id} ${label} comparison"`}>
+      <img src="assets/posters/${family}-${item.id}-phys.jpg" alt="" loading="${duplicate ? "lazy" : "eager"}">
+      <span><b>${item.id.replace("multi_event_", "ME–")}</b>${item.category}</span>
+    </button>`;
+
+  heroReel.innerHTML = [
+    ...samples.map((sample) => tile(sample)),
+    ...samples.map((sample) => tile(sample, true)),
+  ].join("");
+
+  heroReel.querySelectorAll(".hero-reel__tile:not([aria-hidden])").forEach((button) => {
+    button.addEventListener("click", () => {
+      renderFamily(button.dataset.family);
+      document.querySelector("#comparisons").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+}
 
 function highlightedPrompt(item) {
   const [before, after = ""] = item.prompt.split(item.highlight);
@@ -248,4 +273,5 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) document.querySelectorAll(".comparison-card").forEach((card) => setPairState(card, false));
 });
 
+renderHeroReel();
 renderFamily(currentFamily);
