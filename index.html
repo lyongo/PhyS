@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhyS distills physical priors into streaming world models. Explore visual results and the PhyS-120K dataset.">
+    <meta name="description" content="PhyS distills physical priors into streaming world models. Explore interactive video comparisons across streaming generation methods.">
     <meta name="theme-color" content="#f4f2ed">
     <title>Distilling Physical Priors into Streaming World Models</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,6 @@
       <a class="wordmark" href="#top" aria-label="PhyS home">PhyS</a>
       <nav aria-label="Primary navigation">
         <a href="#comparisons">Video comparisons</a>
-        <a href="#results">Visual results</a>
-        <a href="#dataset">Dataset</a>
       </nav>
       <a class="header-link" href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
     </header>
@@ -43,7 +41,7 @@
         <div class="actions" aria-label="Project links">
           <a class="action action-primary" href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
           <a class="action" href="https://github.com/lyongo/PhyS">Code <span aria-hidden="true">&#8599;</span></a>
-          <a class="action" href="#dataset">Dataset <span aria-hidden="true">&#8595;</span></a>
+          <a class="action" href="assets/figures/dataset_overview.png">Dataset <span aria-hidden="true">&#8599;</span></a>
         </div>
 
         <div class="hero-reel" aria-label="Multi-event physical interaction gallery">
@@ -56,8 +54,8 @@
           </div>
         </div>
 
-        <a class="scroll-cue" href="#results">
-          Explore the visuals
+        <a class="scroll-cue" href="#comparisons">
+          Explore video demos
           <span aria-hidden="true">&#8595;</span>
         </a>
       </section>
@@ -99,69 +97,12 @@
         <noscript><p class="noscript-note">Enable JavaScript to browse the synchronized video comparisons.</p></noscript>
       </section>
 
-      <section id="results" class="showcase showcase-dark" aria-labelledby="results-title">
-        <div class="section-heading">
-          <p class="section-index">02 / Visual results</p>
-          <h2 id="results-title">Physics that holds together over time.</h2>
-          <p>PhyS preserves interactions, deformation, and state changes through long autoregressive rollouts.</p>
-        </div>
-
-        <figure class="visual visual-hero">
-          <a href="assets/figures/long_horizon_comparison.png" aria-label="Open long-horizon comparison at full size">
-            <img src="assets/figures/long_horizon_comparison.png" alt="Long-horizon comparisons showing PhyS preserving collisions, deformation, cloth motion, and phase transitions" loading="eager">
-          </a>
-          <figcaption><span>Long-horizon rollouts</span> Five moments across ten seconds of generated physical evolution.</figcaption>
-        </figure>
-
-        <figure class="visual">
-          <a href="assets/figures/stage1_comparison.png" aria-label="Open physical-prior comparison at full size">
-            <img src="assets/figures/stage1_comparison.png" alt="Visual comparison of PhyS against WISA and VideoREPA across rigid, soft, fluid, and phase-transition processes" loading="lazy">
-          </a>
-          <figcaption><span>Physical priors</span> Rigid-body collision, soft-body compression, fluid behavior, and melting.</figcaption>
-        </figure>
-
-        <figure class="visual visual-metrics">
-          <a href="assets/figures/benchmark_improvements.png" aria-label="Open benchmark summary at full size">
-            <img src="assets/figures/benchmark_improvements.png" alt="Benchmark improvements on PhysicsIQ, VideoPhy, and VideoPhy2" loading="lazy">
-          </a>
-          <figcaption><span>Measured gains</span> Consistent improvements across physical video benchmarks and streaming backbones.</figcaption>
-        </figure>
-      </section>
-
-      <section id="dataset" class="showcase showcase-light" aria-labelledby="dataset-title">
-        <div class="section-heading">
-          <p class="section-index">03 / PhyS-120K dataset</p>
-          <h2 id="dataset-title">120,804 real-world physical interactions.</h2>
-          <p>Four families of observable physical processes, paired with structured object properties and causal event sequences.</p>
-        </div>
-
-        <figure class="visual visual-hero">
-          <a href="assets/figures/dataset_gallery.png" aria-label="Open dataset gallery at full size">
-            <img src="assets/figures/dataset_gallery.png" alt="Examples from PhyS-120K covering fluid dynamics, soft-body deformation, phase transitions, and rigid-body mechanics" loading="lazy">
-          </a>
-          <figcaption><span>Four physical families</span> Fluid dynamics · Soft-body deformation · Phase transitions · Rigid-body mechanics.</figcaption>
-        </figure>
-
-        <div class="dataset-facts" aria-label="Dataset summary">
-          <div><strong>120,804</strong><span>videos</span></div>
-          <div><strong>4</strong><span>physical families</span></div>
-          <div><strong>Structured</strong><span>properties + causal events</span></div>
-        </div>
-
-        <figure class="visual">
-          <a href="assets/figures/dataset_overview.png" aria-label="Open dataset construction overview at full size">
-            <img src="assets/figures/dataset_overview.png" alt="PhyS-120K filtering, category distribution, video duration, and physics-aware annotation pipeline" loading="lazy">
-          </a>
-          <figcaption><span>Dataset construction</span> Filtering, balancing, scenario coverage, and physics-aware video annotation.</figcaption>
-        </figure>
-      </section>
-
       <section class="closing" aria-label="Project resources">
         <p>Distilling Physical Priors into Streaming World Models</p>
         <div>
           <a href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
           <a href="https://github.com/lyongo/PhyS">Code <span aria-hidden="true">&#8599;</span></a>
-          <a href="#dataset">Dataset <span aria-hidden="true">&#8593;</span></a>
+          <a href="assets/figures/dataset_overview.png">Dataset <span aria-hidden="true">&#8599;</span></a>
         </div>
       </section>
     </main>
