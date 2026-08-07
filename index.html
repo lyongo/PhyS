@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhyS distills physical priors into streaming world models. Explore interactive video comparisons across streaming generation methods.">
+    <meta name="description" content="Explore the PhyS-120K dataset, structured physics annotations, and complete four-way video comparisons for streaming world models.">
     <meta name="theme-color" content="#f4f2ed">
     <title>Distilling Physical Priors into Streaming World Models</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,9 @@
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="PhyS home">PhyS</a>
       <nav aria-label="Primary navigation">
-        <a href="#comparisons">Video comparisons</a>
+        <a href="#demo">Demo</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#comparisons">Video results</a>
       </nav>
       <a class="header-link" href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
     </header>
@@ -41,39 +43,78 @@
         <div class="actions" aria-label="Project links">
           <a class="action action-primary" href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
           <a class="action" href="https://github.com/lyongo/PhyS">Code <span aria-hidden="true">&#8599;</span></a>
-          <a class="action" href="assets/figures/dataset_overview.png">Dataset <span aria-hidden="true">&#8599;</span></a>
+          <a class="action" href="#dataset">Dataset <span aria-hidden="true">&#8595;</span></a>
         </div>
 
-        <div class="hero-reel" aria-label="Multi-event physical interaction gallery">
-          <div class="hero-reel__meta">
-            <span>Multi-event physical interaction gallery</span>
-            <span>15 sequences · 10 seconds each</span>
-          </div>
-          <div class="hero-reel__viewport">
-            <div id="heroReel" class="hero-reel__track"></div>
-          </div>
-        </div>
-
-        <a class="scroll-cue" href="#comparisons">
-          Explore video demos
+        <a class="scroll-cue" href="#demo">
+          Watch the paper demo
           <span aria-hidden="true">&#8595;</span>
         </a>
       </section>
 
-      <section id="comparisons" class="video-lab" aria-labelledby="comparisons-title">
-        <div class="video-lab__heading">
-          <p class="section-index">01 / Interactive comparisons</p>
-          <div>
-            <h2 id="comparisons-title">Watch the physics unfold.</h2>
-            <p>Matched ten-second generations reveal whether a streaming model preserves the full physical sequence—not just a convincing first frame.</p>
+      <section id="demo" class="demo-section" aria-labelledby="demo-title">
+        <div class="demo-intro">
+          <p class="section-index">Paper video / overview</p>
+          <p class="tldr"><strong>TL;DR:</strong> PhyS distills physical priors from 120K real interactions into streaming world models, then preserves them through causal distillation and temporally routed reinforcement learning—yielding more coherent long-horizon physical events.</p>
+        </div>
+        <figure class="paper-demo">
+          <div class="paper-demo__frame">
+            <video controls playsinline preload="metadata" poster="assets/posters/phys-paper-demo.jpg" aria-label="PhyS paper video demo">
+              <source src="assets/videos/full/phys-paper-demo.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="video-key" aria-label="Comparison legend">
-            <span><i class="video-key__baseline"></i>Forcing baseline</span>
-            <span><i class="video-key__phys"></i>+PhyS</span>
-          </div>
+          <figcaption>
+            <span id="demo-title">Distilling Physical Priors into Streaming World Models</span>
+            <span>3:51 · dataset, method, and qualitative results</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="dataset" class="dataset-section" aria-labelledby="dataset-title">
+        <div class="section-heading dataset-heading">
+          <p class="section-index">01 / PhyS-120K dataset</p>
+          <h2 id="dataset-title">Physical interactions, captured at scale.</h2>
+          <p>120,804 real-world videos spanning rigid bodies, soft bodies, fluids, and phase transitions, paired with structured physical annotations.</p>
         </div>
 
-        <div class="method-switcher" role="tablist" aria-label="Streaming method">
+        <div class="dataset-video-grid" aria-label="PhyS-120K video samples">
+          <figure class="dataset-video-card dataset-video-card--wide">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/rigid_billiards.mp4" aria-label="Billiard-ball collision"></video>
+            <figcaption><span>Rigid bodies</span> Collision and momentum transfer</figcaption>
+          </figure>
+          <figure class="dataset-video-card">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/soft_compression.mp4" aria-label="Elastic ball compression"></video>
+            <figcaption><span>Soft bodies</span> Compression and recovery</figcaption>
+          </figure>
+          <figure class="dataset-video-card">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/fluid_pouring.mp4" aria-label="Orange liquid pouring into a beaker"></video>
+            <figcaption><span>Fluids</span> Gravity-driven pouring</figcaption>
+          </figure>
+          <figure class="dataset-video-card">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/phase_egg.mp4" aria-label="Egg cooking on a hot griddle"></video>
+            <figcaption><span>Phase transitions</span> Liquid-to-solid cooking</figcaption>
+          </figure>
+          <figure class="dataset-video-card">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/soft_fracture.mp4" aria-label="Material fracture"></video>
+            <figcaption><span>Soft bodies</span> Tearing and fracture</figcaption>
+          </figure>
+          <figure class="dataset-video-card dataset-video-card--wide">
+            <video autoplay muted loop playsinline preload="metadata" src="assets/dataset/videos/rigid_chain.mp4" aria-label="Rigid-body chain reaction"></video>
+            <figcaption><span>Rigid bodies</span> Sequential chain reaction</figcaption>
+          </figure>
+        </div>
+
+        <div id="annotations" class="annotation-heading">
+          <p class="section-index">Structured annotations</p>
+          <h3>Objects, properties, interactions, and causal event sequences.</h3>
+          <p>Two examples from the annotation pipeline. Each record preserves the original JSON fields and complete model output.</p>
+        </div>
+        <div id="annotationGrid" class="annotation-grid" aria-live="polite"></div>
+        <noscript><p class="noscript-note">Enable JavaScript to inspect the structured JSON annotations.</p></noscript>
+      </section>
+
+      <section id="comparisons" class="video-lab video-lab--minimal" aria-label="Complete video results">
+        <div class="method-switcher" role="tablist" aria-label="Forcing method">
           <button class="method-tab is-active" type="button" role="tab" aria-selected="true" data-family="self">
             <span>01</span> Self-Forcing
           </button>
@@ -85,8 +126,7 @@
           </button>
         </div>
 
-        <div class="comparison-toolbar">
-          <p id="methodNote">Self-Forcing generates each block from its own previous predictions.</p>
+        <div class="comparison-toolbar comparison-toolbar--minimal">
           <button id="playVisible" class="play-visible" type="button" aria-pressed="false">
             <span class="play-visible__icon" aria-hidden="true">▶</span>
             Play visible pairs
@@ -102,7 +142,7 @@
         <div>
           <a href="assets/files/paper.pdf">Arxiv <span aria-hidden="true">&#8599;</span></a>
           <a href="https://github.com/lyongo/PhyS">Code <span aria-hidden="true">&#8599;</span></a>
-          <a href="assets/figures/dataset_overview.png">Dataset <span aria-hidden="true">&#8599;</span></a>
+          <a href="#dataset">Dataset <span aria-hidden="true">&#8593;</span></a>
         </div>
       </section>
     </main>
@@ -111,6 +151,7 @@
       <p>PhyS · Fudan University · Shanghai AI Laboratory</p>
       <a href="#top" aria-label="Back to top">Back to top &#8593;</a>
     </footer>
+    <script src="assets/dataset/annotations.js" defer></script>
     <script src="comparison.js" defer></script>
   </body>
 </html>
