@@ -166,10 +166,25 @@ h1 span {
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
-.action:hover {
+.action:not(.action-coming-soon):hover {
   background: var(--ink);
   color: var(--paper);
   transform: translateY(-2px);
+}
+
+.action-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-color: var(--line);
+  color: var(--muted);
+  cursor: default;
+}
+
+.action-coming-soon small,
+.resource-status small {
+  font: inherit;
+  color: #087d91;
 }
 
 .action-primary {
@@ -473,11 +488,25 @@ figcaption span {
   gap: 24px;
 }
 
-.closing a {
+.closing a,
+.closing .resource-status {
   font-family: "DM Mono", monospace;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.closing a {
   text-underline-offset: 5px;
+}
+
+.closing .resource-status {
+  display: inline-flex;
+  gap: 7px;
+  color: rgba(242, 241, 235, 0.74);
+}
+
+.closing .resource-status small {
+  color: var(--acid);
 }
 
 footer {
