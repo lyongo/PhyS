@@ -187,18 +187,6 @@ h1 span {
   color: #087d91;
 }
 
-.paper-index {
-  margin: 13px 0 0;
-  color: var(--muted);
-  font-family: "DM Mono", monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-
-.paper-index span {
-  color: #087d91;
-}
-
 .action-primary {
   background: var(--ink);
   color: var(--paper);
@@ -521,9 +509,46 @@ figcaption span {
   color: var(--acid);
 }
 
+.citation-section {
+  padding: 92px max(34px, calc((100vw - 1120px) / 2));
+  background: var(--canvas);
+}
+
+.citation-inner {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.citation-inner .section-index {
+  color: #087d91;
+}
+
+.citation-inner h2 {
+  margin-top: 14px;
+  font-size: 46px;
+}
+
+.citation-inner pre {
+  overflow-x: auto;
+  margin: 32px 0 0;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.citation-inner code {
+  font: inherit;
+}
+
 footer {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   padding: 28px 34px;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
@@ -541,16 +566,6 @@ footer p {
 footer a {
   justify-self: end;
   text-underline-offset: 4px;
-}
-
-footer .paper-index {
-  margin: 0;
-  color: #aeb5b1;
-  text-align: center;
-}
-
-footer .paper-index span {
-  color: var(--cyan);
 }
 
 .video-lab {
@@ -1082,13 +1097,23 @@ footer .paper-index span {
     padding: 24px 20px;
   }
 
-  footer .paper-index {
-    justify-self: start;
-    text-align: left;
-  }
-
   footer a {
     justify-self: start;
+  }
+
+  .citation-section {
+    padding: 68px 20px;
+  }
+
+  .citation-inner h2 {
+    font-size: 38px;
+  }
+
+  .citation-inner pre {
+    padding: 20px;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
   }
 
   .method-tab {
