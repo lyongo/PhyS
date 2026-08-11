@@ -161,14 +161,19 @@
 
       <section id="citation" class="citation-section" aria-labelledby="citation-title">
         <div class="citation-inner">
-          <p class="section-index">Paper index</p>
           <h2 id="citation-title">Citation</h2>
-          <pre><code>@article{zhao2026distilling,
+          <div class="citation-card">
+            <button class="citation-copy" type="button" aria-label="Copy BibTeX citation" data-copy-target="citation-bibtex">
+              <span class="copy-icon" aria-hidden="true"></span>
+              <span class="copy-label">Copy</span>
+            </button>
+            <pre><code id="citation-bibtex">@article{zhao2026distilling,
   title={Distilling Physical Priors into Streaming World Models},
   author={Zhao, Liangliang and Wang, Junying and Yang, Danni and Chang, Yifan and Fu, Bin and Qiao, Yu and Zhou, Bowen and Liu, Yihao},
   journal={arXiv preprint arXiv:2608.07981},
   year={2026}
 }</code></pre>
+          </div>
         </div>
       </section>
     </main>
@@ -179,5 +184,33 @@
     </footer>
     <script src="assets/dataset/annotations.js" defer></script>
     <script src="comparison.js" defer></script>
+    <script>
+      document.querySelector(".citation-copy")?.addEventListener("click", async (event) => {
+        const button = event.currentTarget;
+        const citation = document.getElementById(button.dataset.copyTarget)?.textContent || "";
+        const label = button.querySelector(".copy-label");
+
+        try {
+          await navigator.clipboard.writeText(citation);
+        } catch {
+          const input = document.createElement("textarea");
+          input.value = citation;
+          input.setAttribute("readonly", "");
+          input.style.position = "fixed";
+          input.style.opacity = "0";
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+
+        label.textContent = "Copied";
+        button.classList.add("is-copied");
+        window.setTimeout(() => {
+          label.textContent = "Copy";
+          button.classList.remove("is-copied");
+        }, 1600);
+      });
+    </script>
   </body>
 </html>

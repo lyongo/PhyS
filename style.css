@@ -510,40 +510,105 @@ figcaption span {
 }
 
 .citation-section {
-  padding: 92px max(34px, calc((100vw - 1120px) / 2));
-  background: var(--canvas);
+  padding: 112px max(34px, calc((100vw - 1280px) / 2)) 124px;
+  background: #fbfbf9;
 }
 
 .citation-inner {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
-.citation-inner .section-index {
-  color: #087d91;
+.citation-inner h2 {
+  margin: 0;
+  font-size: 54px;
+  text-align: center;
 }
 
-.citation-inner h2 {
-  margin-top: 14px;
-  font-size: 46px;
+.citation-inner h2::after {
+  content: "";
+  display: block;
+  width: 108px;
+  height: 3px;
+  margin: 32px auto 0;
+  background: #626764;
+}
+
+.citation-card {
+  position: relative;
+  margin-top: 66px;
+  padding: 48px 48px 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f1f2f0;
 }
 
 .citation-inner pre {
   overflow-x: auto;
-  margin: 32px 0 0;
-  padding: 26px 28px;
-  border: 1px solid var(--line);
-  background: var(--paper);
+  margin: 0;
+  padding: 0 180px 0 0;
   color: var(--ink);
   font-family: "DM Mono", monospace;
-  font-size: 13px;
-  line-height: 1.7;
-  white-space: pre;
+  font-size: 15px;
+  line-height: 1.75;
+  white-space: pre-wrap;
 }
 
 .citation-inner code {
   font: inherit;
+}
+
+.citation-copy {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid #cfd2cf;
+  border-radius: 6px;
+  color: #555d63;
+  background: rgba(255, 255, 255, 0.58);
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.citation-copy:hover,
+.citation-copy:focus-visible,
+.citation-copy.is-copied {
+  border-color: #087d91;
+  color: #087d91;
+  background: white;
+}
+
+.citation-copy:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.copy-icon {
+  position: relative;
+  width: 14px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+}
+
+.copy-icon::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 10px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: #f1f2f0;
 }
 
 footer {
@@ -1102,15 +1167,30 @@ footer a {
   }
 
   .citation-section {
-    padding: 68px 20px;
+    padding: 72px 20px 82px;
   }
 
   .citation-inner h2 {
-    font-size: 38px;
+    font-size: 42px;
+  }
+
+  .citation-inner h2::after {
+    width: 76px;
+    margin-top: 24px;
+  }
+
+  .citation-card {
+    margin-top: 48px;
+    padding: 78px 20px 24px;
+  }
+
+  .citation-copy {
+    top: 18px;
+    right: 18px;
   }
 
   .citation-inner pre {
-    padding: 20px;
+    padding: 0;
     font-size: 11px;
     overflow-wrap: anywhere;
     white-space: pre-wrap;
